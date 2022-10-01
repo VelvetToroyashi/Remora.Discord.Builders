@@ -26,7 +26,7 @@ public static class InteractionBuilderExtensions
         return builder with { Content = content };
     }
 
-    public static InteractionBuilder WithEmbed(this InteractionBuilder builder, IEmbed embed)
+    public static InteractionBuilder AddEmbed(this InteractionBuilder builder, IEmbed embed)
     {
         var embeds = builder.Embeds.ValueOr(Enumerable.Empty<IEmbed>()).Append(embed);
         
