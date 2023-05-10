@@ -10,7 +10,8 @@
         <Description>Adds builders to make Remora.Discord slightly easier to use.</Description>
         <RepositoryUrl>https://github.com/VelvetThePanda/Remora.Discord.Builders</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
-        <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+        <PackageReleaseNotes>Update dependencies.</PackageReleaseNotes>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
