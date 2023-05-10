@@ -16,50 +16,27 @@ public record struct SelectBuilder
 
 public static class SelectBuilderExtensions
 {
-    public static SelectBuilder WithCustomID(this SelectBuilder builder, string customID)
-    {
-        return builder with { CustomID = customID };
-    }
-    
+    public static SelectBuilder WithCustomID(this SelectBuilder builder, string customID) => builder with { CustomID = customID };
+
     public static SelectBuilder AddOption(this SelectBuilder builder, ISelectOption option)
     {
-        var newOptions = builder.Options.ValueOr(Enumerable.Empty<ISelectOption>()).Append(option);
+        var newOptions = builder.Options.ValueOr(Enumerable.Empty<ISelectOption>()).Append(option).AsOptional();
 
-        return builder with { Options = new(newOptions) };
+        return builder with { Options = newOptions };
     }
-    
-    public static SelectBuilder AddOptions(this SelectBuilder builder, IEnumerable<ISelectOption> options)
-    {
-        return builder with { Options = new(options) };
-    }
-    
-    public static SelectBuilder WithPlaceholder(this SelectBuilder builder, string placeholder)
-    {
-        return builder with { Placeholder = placeholder };
-    }
-    
-    public static SelectBuilder WithMinValues(this SelectBuilder builder, int minValues)
-    {
-        return builder with { MinValues = minValues };
-    }
-    
-    public static SelectBuilder WithMaxValues(this SelectBuilder builder, int maxValues)
-    {
-        return builder with { MaxValues = maxValues };
-    }
-    
-    public static SelectBuilder Disable(this SelectBuilder builder)
-    {
-        return builder with { IsDisabled = true };
-    }
-    
-    public static SelectBuilder Enable(this SelectBuilder builder)
-    {
-        return builder with { IsDisabled = false };
-    }
-    
-    public static SelectMenuComponent Build(this SelectBuilder builder)
-    {
-        return new(builder.CustomID.Value, builder.Options.Value.ToArray(), builder.Placeholder, builder.MinValues, builder.MaxValues, builder.IsDisabled);
-    }
+
+    public static SelectBuilder AddOptions(this SelectBuilder builder, IEnumerable<ISelectOption> options) => builder with { Options = new(options) };
+
+    public static SelectBuilder WithPlaceholder(this SelectBuilder builder, string placeholder) => builder with { Placeholder = placeholder };
+
+    public static SelectBuilder WithMinValues(this SelectBuilder builder, int minValues) => builder with { MinValues = minValues };
+
+    public static SelectBuilder WithMaxValues(this SelectBuilder builder, int maxValues) => builder with { MaxValues = maxValues };
+
+    public static SelectBuilder Disable(this SelectBuilder builder) => builder with { IsDisabled = true };
+
+    public static SelectBuilder Enable(this SelectBuilder builder) => builder with { IsDisabled = false };
+
+    public static StringSelectComponent Build(this SelectBuilder builder)
+        => new(builder.CustomID.Value, builder.Options.Value.ToArray(), builder.Placeholder, builder.MinValues, builder.MaxValues, builder.IsDisabled);
 }
