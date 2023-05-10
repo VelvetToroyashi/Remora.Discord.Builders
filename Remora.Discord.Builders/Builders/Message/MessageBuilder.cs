@@ -37,10 +37,7 @@ public static class MessageBuilderExtensions
     /// <param name="builder">The builder.</param>
     /// <param name="content">The content.</param>
     /// <returns>A new builder with the set content.</returns>
-    public static MessageBuilder WithContent(this MessageBuilder builder, string content)
-    {
-        return builder with { Content = content };
-    }
+    public static MessageBuilder WithContent(this MessageBuilder builder, string content) => builder with { Content = content };
 
     /// <summary>
     /// Appends a single embed to the given builder.
@@ -119,10 +116,7 @@ public static class MessageBuilderExtensions
     /// <param name="builder">The builder.</param>
     /// <param name="allowedMentions">The allowed mentions.</param>
     /// <returns>A new builder with the set allowed mentions.</returns>
-    public static MessageBuilder WithAllowedMentions(this MessageBuilder builder, IAllowedMentions allowedMentions)
-    {
-        return builder with { Mentions = new(allowedMentions) };
-    }
+    public static MessageBuilder WithAllowedMentions(this MessageBuilder builder, IAllowedMentions allowedMentions) => builder with { Mentions = new(allowedMentions) };
 
     public static Result Validate(this MessageBuilder builder)
     {

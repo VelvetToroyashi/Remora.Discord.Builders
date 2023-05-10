@@ -17,8 +17,7 @@ public static class IDiscordRestScheduledEventAPIExtensions
         bool validate = false,
         CancellationToken ct = default
     )
-    {
-        return await scheduledEventAPI.CreateGuildScheduledEventAsync
+        => await scheduledEventAPI.CreateGuildScheduledEventAsync
         (
             guildID,
             builder.ChannelID,
@@ -33,8 +32,7 @@ public static class IDiscordRestScheduledEventAPIExtensions
             builder.Reason,
             ct
         );
-    }
-    
+
     public static async Task<Result<IGuildScheduledEvent>> ModifyGuildScheduledEventAsync
     (
         this IDiscordRestGuildScheduledEventAPI scheduledEventAPI,
@@ -45,8 +43,7 @@ public static class IDiscordRestScheduledEventAPIExtensions
         bool validate = false,
         CancellationToken ct = default
     )
-    {
-        return await scheduledEventAPI.ModifyGuildScheduledEventAsync
+        => await scheduledEventAPI.ModifyGuildScheduledEventAsync
         (
             guildID,
             eventID,
@@ -63,5 +60,4 @@ public static class IDiscordRestScheduledEventAPIExtensions
             builder.Reason,
             ct
         );
-    }
 }
