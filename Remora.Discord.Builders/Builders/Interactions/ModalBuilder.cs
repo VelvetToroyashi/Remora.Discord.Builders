@@ -36,6 +36,9 @@ public static class TextInputBuilderExtensions
     public static TextInputBuilder WithLabel(this TextInputBuilder builder, string label)
         => builder with { Label = label };
 
+    public static TextInputBuilder WithStyle(this TextInputBuilder builder, TextInputStyle style)
+        => builder with { Style = style };
+
     public static TextInputBuilder WithValue(this TextInputBuilder builder, string value)
         => builder with { Value = value };
 
