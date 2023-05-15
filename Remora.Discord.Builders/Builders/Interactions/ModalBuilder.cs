@@ -57,6 +57,9 @@ public static class ModalBuilderExtensions
     public static ModalBuilder WithCustomID(this ModalBuilder builder, string customID)
         => builder with { CustomID = customID };
 
+    public static ModalBuilder WithTitle(this ModalBuilder builder, string title)
+        => builder with { Title = title };
+
     public static ModalBuilder AddForm(this ModalBuilder builder, TextInputBuilder form)
     {
         var newForms = builder.Forms.ValueOr(Enumerable.Empty<ITextInputComponent>()).Append(form.Build());
